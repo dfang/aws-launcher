@@ -4,6 +4,8 @@
 
 最近在全面学习aws服务，准备考解决方案架构师和DevOps认证，需要经常打开某个aws服务主页。用惯了alfred一键到达。所以......
 
+所有新增图标来自[aws](https://aws.amazon.com/architecture/icons/) 或 google images
+
 [![npm version](https://img.shields.io/npm/v/aws-launcher.svg?style=flat)](https://www.npmjs.com/package/aws-launcher)
 
 [![AWS Launcher](https://github.com/kwent/aws-launcher/blob/master/doc/aws-launcher.gif?raw=true)](https://github.com/kwent/aws-launcher/)

@@ -16,6 +16,20 @@ urlsFixing = {
   "Aurora": "https://aws.amazon.com/rds/aurora/",
   "Autoscaling": "https://aws.amazon.com/autoscaling/",
   "LoadBalancing": "https://aws.amazon.com/loadbalancing/",
+  "DevOps": "https://aws.amazon.com/devops",
+  "Fargate": "https://aws.amazon.com/fargate",
+  "Architecure-Center": "https://aws.amazon.com/architecture/",
+  "Well-Architected": "https://aws.amazon.com/architecture/well-architected/",
+  "Well-Architected-Tool": "https://aws.amazon.com/well-architected-tool/",
+  "Security-Identity-and-Compliance": "https://aws.amazon.com/products/security/",
+  "Single-Sign-On": "https://aws.amazon.com/single-sign-on/",
+  "SSO": "https://aws.amazon.com/single-sign-on/",
+  "Security-Hub": "https://aws.amazon.com/security-hub/",
+  "AWS-VPN": "https://aws.amazon.com/vpn/",
+  "Developer-Center": "https://aws.amazon.com/developer/",
+  "Global-Insfracture": "https://aws.amazon.com/about-aws/global-infrastructure",
+  "Regions-And-Zones": "https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/",
+  "Lambda@Edge": "https://aws.amazon.com/lambda/edge/"
 }
 
 namespacesFixing = {
@@ -33,6 +47,7 @@ namespacesFixing = {
   "License-Manager": "license-manager",
   "Firewall-Manager": "waf",
   "Resource-Access-Manager": "ram",
+  "AWS-Service-Quotas": "servicequotas"
 }
 
 // Create destination folder

@@ -21,26 +21,26 @@ Added:
 - AWS App Mesh
 - AutoScaling https://aws.amazon.com/autoscaling/
 - Load Balancing https://aws.amazon.com/loadbalancing/
+- Fargate https://aws.amazon.com/fargate/
+- Devops https://aws.amazon.com/devops
 - Systems Manager
 - Secrets Manager
 - License Manager
 - Resource Access Manager
 - Filewall Manager
-
-To add:
-
-- Service Quota
-- ChatBot
+- Well Architected 
+- Well Architected Tool
+- DataSync https://aws.amazon.com/datasync/
+- Security, Identity, and Compliance on AWS https://aws.amazon.com/products/security/
+- VPN https://aws.amazon.com/vpn/
+- Single Sign On https://aws.amazon.com/single-sign-on/
+- Security Hub https://aws.amazon.com/security-hub/
+- Architecture Center https://aws.amazon.com/architecture/
 - EKS
 - ECR
-- Lambda@edge
-- Architecture Center
-- Well Architected 
-- Datasync https://aws.amazon.com/datasync/
-- Fargate https://aws.amazon.com/fargate/
-- Mobile Hub
-- Security Hub https://aws.amazon.com/security-hub/
-- VPN https://aws.amazon.com/vpn/
 - Global Insfracture https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/
 - Developer Center https://aws.amazon.com/developer/?nc1=f_dr
-- Devops https://aws.amazon.com/devops/what-is-devops/?nc1=f_cc
+- Service Quota
+- ChatBot
+- Lambda@edge
+- Mobile Hub - Now Amplify
