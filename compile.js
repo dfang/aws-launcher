@@ -4,6 +4,7 @@ const exec = require('child_process').exec;
 const destDir = `${os.homedir()}/aws-launcher`;
 
 urlsFixing = {
+  "AWS-Management-Console": "https://console.aws.amazon.com",
   "Lightsail": "https://lightsail.aws.amazon.com/ls/webapp/create/instance",
   "QuickSight": "https://us-east-1.quicksight.aws.amazon.com/sn/console",
   "Budgets": "https://console.aws.amazon.com/billing",
@@ -13,10 +14,12 @@ urlsFixing = {
   "Global-Accelerator": "https://aws.amazon.com/global-accelerator/",
   "AppStream": "https://aws.amazon.com/appstream2/",
   "Aurora": "https://aws.amazon.com/rds/aurora/",
+  "Autoscaling": "https://aws.amazon.com/autoscaling/",
+  "LoadBalancing": "https://aws.amazon.com/loadbalancing/",
 }
 
 namespacesFixing = {
-  "CertificateManager": "acm",
+  "Certificate-Manager": "acm",
   "ElasticCache": "elasticache",
   "EMR": "elasticmapreduce",
   "Shield": "waf",
@@ -26,6 +29,10 @@ namespacesFixing = {
   "X-Ray": "xray",
   "Cost-Explorer": "billing",
   "Budgets": "billing",
+  "Secrets-Manager": "secretsmanager",
+  "License-Manager": "license-manager",
+  "Firewall-Manager": "waf",
+  "Resource-Access-Manager": "ram",
 }
 
 // Create destination folder

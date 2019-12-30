@@ -21,6 +21,11 @@ Added:
 - AWS App Mesh
 - AutoScaling https://aws.amazon.com/autoscaling/
 - Load Balancing https://aws.amazon.com/loadbalancing/
+- Systems Manager
+- Secrets Manager
+- License Manager
+- Resource Access Manager
+- Filewall Manager
 
 To add:
 
@@ -29,9 +34,6 @@ To add:
 - EKS
 - ECR
 - Lambda@edge
-- Systems Manager
-- Secrets Manager
-- License Manager
 - Architecture Center
 - Well Architected 
 - Datasync https://aws.amazon.com/datasync/
