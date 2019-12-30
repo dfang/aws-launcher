@@ -10,7 +10,9 @@ urlsFixing = {
   "Cost-Explorer": "https://console.aws.amazon.com/billing",
   "Macie": "https://aws.amazon.com/macie/",
   "Personal-Health-Dashboard": "https://phd.aws.amazon.com/phd/home",
-  "Global-Accelerator": "https://aws.amazon.com/global-accelerator/"
+  "Global-Accelerator": "https://aws.amazon.com/global-accelerator/",
+  "AppStream": "https://aws.amazon.com/appstream2/",
+  "Aurora": "https://aws.amazon.com/rds/aurora/",
 }
 
 namespacesFixing = {

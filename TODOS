@@ -19,7 +19,8 @@ Added:
 - Outposts
 - Global Accelerator
 - AWS App Mesh
-
+- AutoScaling https://aws.amazon.com/autoscaling/
+- Load Balancing https://aws.amazon.com/loadbalancing/
 
 To add:
 
@@ -28,11 +29,16 @@ To add:
 - EKS
 - ECR
 - Lambda@edge
+- Systems Manager
+- Secrets Manager
+- License Manager
 - Architecture Center
 - Well Architected 
+- Datasync https://aws.amazon.com/datasync/
+- Fargate https://aws.amazon.com/fargate/
+- Mobile Hub
 - Security Hub https://aws.amazon.com/security-hub/
 - VPN https://aws.amazon.com/vpn/
-- AutoScaling https://aws.amazon.com/autoscaling/
 - Global Insfracture https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/
 - Developer Center https://aws.amazon.com/developer/?nc1=f_dr
 - Devops https://aws.amazon.com/devops/what-is-devops/?nc1=f_cc
