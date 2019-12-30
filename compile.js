@@ -5,7 +5,12 @@ const destDir = `${os.homedir()}/aws-launcher`;
 
 urlsFixing = {
   "Lightsail": "https://lightsail.aws.amazon.com/ls/webapp/create/instance",
-  "QuickSight": "https://us-east-1.quicksight.aws.amazon.com/sn/console"
+  "QuickSight": "https://us-east-1.quicksight.aws.amazon.com/sn/console",
+  "Budgets": "https://console.aws.amazon.com/billing",
+  "Cost-Explorer": "https://console.aws.amazon.com/billing",
+  "Macie": "https://aws.amazon.com/macie/",
+  "Personal-Health-Dashboard": "https://phd.aws.amazon.com/phd/home",
+  "Global-Accelerator": "https://aws.amazon.com/global-accelerator/"
 }
 
 namespacesFixing = {
@@ -17,6 +22,8 @@ namespacesFixing = {
   "StepFunctions": "states",
   "WorkDocs": "zocalo",
   "X-Ray": "xray",
+  "Cost-Explorer": "billing",
+  "Budgets": "billing",
 }
 
 // Create destination folder
@@ -32,10 +39,10 @@ files.forEach((file, index) => {
   const namespace = namespacesFixing[file] || file.toLowerCase();
   const url = urlsFixing[file] || `https://console.aws.amazon.com/${namespace}/home`;
   fs.writeFileSync(`${destDir}/${file}.url`, `[InternetShortcut]\nURL=${url}`);
-  exec(`fileicon set ${destDir}/${file}.url icons/${file}.png`, function(error, stdout, stderr) {
+  exec(`fileicon set ${destDir}/${file}.url icons/${file}.png`, function (error, stdout, stderr) {
     console.log(error || stdout);
     if (!error) {
-      exec(`SetFile -a E ${destDir}/${file}.url`, function(error, stdout, stderr) {
+      exec(`SetFile -a E ${destDir}/${file}.url`, function (error, stdout, stderr) {
         if (!error && index === files.length - 1) {
           exec(`open ${destDir}`);
         }

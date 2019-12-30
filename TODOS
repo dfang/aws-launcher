@@ -1,23 +1,38 @@
-# todos
+# TODOs 
 
-Add more services and icons:
+
+Added:
 
 - Personal Health Dashboard
 - Billing
+- AWS Cost Explorer
+- AWS Budgets
 - Glue
 - GuardDuty
 - Macie
-- ChatBot
 - Neptune
 - Elasticache
-- EKS
-- ECR
 - Backup
-- AWS Cost Explorer
-- AWS Budgets
 - MQ
 - Polly
 - Personalize
 - Outposts
 - Global Accelerator
 - AWS App Mesh
+
+
+To add:
+
+- Service Quota
+- ChatBot
+- EKS
+- ECR
+- Lambda@edge
+- Architecture Center
+- Well Architected 
+- Security Hub https://aws.amazon.com/security-hub/
+- VPN https://aws.amazon.com/vpn/
+- AutoScaling https://aws.amazon.com/autoscaling/
+- Global Insfracture https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/
+- Developer Center https://aws.amazon.com/developer/?nc1=f_dr
+- Devops https://aws.amazon.com/devops/what-is-devops/?nc1=f_cc
