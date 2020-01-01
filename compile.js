@@ -29,11 +29,15 @@ urlsFixing = {
   "Developer-Center": "https://aws.amazon.com/developer/",
   "Global-Insfracture": "https://aws.amazon.com/about-aws/global-infrastructure",
   "Regions-And-Zones": "https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/",
-  "Lambda@Edge": "https://aws.amazon.com/lambda/edge/"
+  "Lambda@Edge": "https://aws.amazon.com/lambda/edge/",
+  "EventBridge": "https://console.aws.amazon.com/events/",
+  "Event-Driven-Architecture": "https://aws.amazon.com/event-driven-architecture/"
 }
 
 namespacesFixing = {
   "Certificate-Manager": "acm",
+  "Service-Quotas": "servicequotas",
+  "API-Gateway": "apigateway",
   "ElasticCache": "elasticache",
   "EMR": "elasticmapreduce",
   "Shield": "waf",
@@ -47,7 +51,6 @@ namespacesFixing = {
   "License-Manager": "license-manager",
   "Firewall-Manager": "waf",
   "Resource-Access-Manager": "ram",
-  "AWS-Service-Quotas": "servicequotas"
 }
 
 // Create destination folder
@@ -58,6 +61,7 @@ if (!fs.existsSync(destDir)) {
 // Create shortcuts
 files = fs.readdirSync('icons');
 files.forEach((file, index) => {
+  console.log(`Found file ${file}`)
   file = file.replace(/\.[^/.]+$/, "");
   console.log(`Compiling ${file}`);
   const namespace = namespacesFixing[file] || file.toLowerCase();

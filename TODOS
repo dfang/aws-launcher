@@ -44,3 +44,10 @@ Added:
 - ChatBot
 - Lambda@edge
 - Mobile Hub - Now Amplify
+
+
+- 
+mobilehub -> rebranded to amplify
+simpledb -> depracted in favor of dynamodb
+import/export -> rebranded to snowball
+- Mobile Hub - Now Amplify
