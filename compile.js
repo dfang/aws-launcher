@@ -64,7 +64,6 @@ namespacesFixing = {
   "Managed-Services": "managedservices",
   "API-Gateway": "apigateway",
   "Storage-Gateway": "storagegateway",
-  "ElasticCache": "elasticache",
   "EMR": "elasticmapreduce",
   "Shield": "waf",
   "Snowball": "importexport",
