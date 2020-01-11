@@ -44,10 +44,28 @@ Added:
 - ChatBot
 - Lambda@edge
 - Mobile Hub - Now Amplify
-
+https://aws.amazon.com/vmware/
+https://aws.amazon.com/tensorflow/
+https://aws.amazon.com/deepcomposer/
+https://aws.amazon.com/deepracer/
+https://aws.amazon.com/transit-gateway/
+https://aws.amazon.com/products/developer-tools/
+https://aws.amazon.com/cloudendure-migration/
+https://aws.amazon.com/cloudendure-disater-recovery/
+https://aws.amazon.com/cloud-migration/
+Braket
+Comprehend
+RoboMaker
+Sumerian
+Textract
+Timestream
+Transcribe
+Translate
 
 - 
 mobilehub -> rebranded to amplify
 simpledb -> depracted in favor of dynamodb
 import/export -> rebranded to snowball
 - Mobile Hub - Now Amplify
+https://aws.amazon.com/storagegateway/
+https://aws.amazon.com/imagebuilder/
