@@ -21,29 +21,12 @@ StepFunctions
 homeURL -> aws.amazon.com/step-functions
 consoleURL ->  console.aws.amazon.com/states
 
-
-有Home页面但无Console页面
-
-
-lightsail no console
-https://console.lightsail.aws.amazon.com/
-
-servicequotas got console no home
-https://aws.amazon.com/servicequotas/
-
-
 Systems-Manager
 License-Manager
 
 改了名的服务
 AppStream
 Shield -> WAF
-
-
-有Home无console
-lightsail
-quicksight
-shield
 
 
 SSO
@@ -61,6 +44,26 @@ Mobile Analytics is now part of Amazon Pinpoint
 
 2. Home 跟 Console 不一致 手动修正
 
-3. 只有Home 无Console 图标放icons/aws根目录下
+3. 只有Home无Console 图标放icons/aws根目录下
 
 4. 只有Console   图标放icons/aws根目录下
+
+
+
+2类地址
+
+AppStream
+Shield -> WAF
+
+
+3类地址
+有Home无console
+lightsail
+quicksight
+
+lightsail no console
+https://console.lightsail.aws.amazon.com/
+
+servicequotas got console no home
+https://aws.amazon.com/servicequotas/
+https://console.aws.amazon.com/servicequotas/

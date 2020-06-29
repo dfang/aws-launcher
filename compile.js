@@ -170,16 +170,16 @@ files.forEach((file, index) => {
   const url = urlsFixing[file] || `https://aws.amazon.com/${namespace}`;
   console.log(`url is ${url}`)
   fs.writeFileSync(`${destDir}/aws/${file}.url`, `[InternetShortcut]\nURL=${url}`);
-  // exec(`fileicon set ${destDir}/aws/${file}.url icons/aws/${file}.png`, function (error, stdout, stderr) {
-  //   console.log(error || stdout);
-  //   if (!error) {
-  //     exec(`SetFile -a E ${destDir}/aws/${file}.url`, function (error, stdout, stderr) {
-  //       if (!error && index === files.length - 1) {
-  //         exec(`open ${destDir}`);
-  //       }
-  //     });
-  //   }
-  // });
+  exec(`fileicon set ${destDir}/aws/${file}.url icons/aws/${file}.png`, function (error, stdout, stderr) {
+    console.log(error || stdout);
+    if (!error) {
+      exec(`SetFile -a E ${destDir}/aws/${file}.url`, function (error, stdout, stderr) {
+        if (!error && index === files.length - 1) {
+          exec(`open ${destDir}`);
+        }
+      });
+    }
+  });
   console.log("\n")
 })
 
@@ -277,15 +277,15 @@ function writeShortcutFile(destDir, file, url) {
     fs.writeFileSync(`${destDir}/${file}.url`, `[InternetShortcut]\nURL=${url}`);
     console.log(`write to ${destDir}/${file}.url`)
     console.log("\n")
-    // exec(`fileicon set ${destDir}/${file}.url icons/${file}.png`, function (error, stdout, stderr) {
-    //   console.log(error || stdout);
-    //   if (!error) {
-    //     exec(`SetFile -a E ${destDir}/${file}.url`, function (error, stdout, stderr) {
-    //       if (!error && index === files.length - 1) {
-    //         exec(`open ${destDir}`);
-    //       }
-    //     });
-    //   }
-    // });
-
+    icon = file.replace(/-Console/g, "")
+    exec(`fileicon set ${destDir}/${file}.url icons/${icon}.png`, function (error, stdout, stderr) {
+      console.log(error || stdout);
+      if (!error) {
+        exec(`SetFile -a E ${destDir}/${file}.url`, function (error, stdout, stderr) { });
+      }
+    });
 }
+
+
+
+exec(`open ${destDir}`);
