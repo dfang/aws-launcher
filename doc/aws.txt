@@ -52,3 +52,15 @@ chime
 
 Mobile Analytics is now part of Amazon Pinpoint
 
+
+
+4类地址：
+
+
+1. 正常的, 既有Home又有Console的  图标放icons根目录下
+
+2. Home 跟 Console 不一致 手动修正
+
+3. 只有Home 无Console 图标放icons/aws根目录下
+
+4. 只有Console   图标放icons/aws根目录下
