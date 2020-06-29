@@ -1,0 +1,54 @@
+# README
+
+AWS 服务的命名规则，
+
+通常如果一个服务的名字是 name
+那么这个服务的地址有如下规律
+homeURL 应该是 aws.amazon.com/name
+consoleURL 应该是 console.aws.amazon.com/name
+
+但是也有例外
+
+homeName 跟 consoleName 不一样,(homeName 比 consoleNmae多一横) 这一类icons命名为xx-xx
+比如
+homeURL -> aws.amazon.com/app-mesh
+consoleURL -> console.aws.amazon.com/appmesh
+
+homeURL -> aws.amazon.com/managed-services
+consoleURL -> console.aws.amazon.com/managedservices
+
+StepFunctions
+homeURL -> aws.amazon.com/step-functions
+consoleURL ->  console.aws.amazon.com/states
+
+
+有Home页面但无Console页面
+
+
+lightsail no console
+https://console.lightsail.aws.amazon.com/
+
+servicequotas got console no home
+https://aws.amazon.com/servicequotas/
+
+
+Systems-Manager
+License-Manager
+
+改了名的服务
+AppStream
+Shield -> WAF
+
+
+有Home无console
+lightsail
+quicksight
+shield
+
+
+SSO
+
+chime
+
+Mobile Analytics is now part of Amazon Pinpoint
+
