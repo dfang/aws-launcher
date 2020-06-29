@@ -5,19 +5,6 @@ const destDir = `${os.homedir()}/aws-launcher`;
 // Console
 const consoleDir = `${destDir}/console`;
 
-var request = require('request');
-function urlExists(url, cb) {
-  request({ url: url, method: 'GET' }, function (err, res) {
-    
-    console.log(err)
-    if (err) return cb(null, false);
-    console.log(`url is ${url}`)
-    console.log(`statusCode of GET is ${res.statusCode}`)
-    console.log("\n")
-    cb(null, /404/.test(res.statusCode) === false);
-  });
-}
-
 function gotConsolePage(name) {
   return !servicesWithoutConsole.includes(name)
 }
@@ -189,19 +176,20 @@ files.forEach(async (file, index) => {
     return
   }
 
-  console.log(`Found file ${file}`)
+  // console.log(`Found file ${file}`)
   file = file.replace(/\.[^/.]+$/, "")
   // console.log(`Compiling ${file}`);
   const homeName = homeNameFixings[file] || file.toLowerCase();
   const homeUrl = urlsFixing[file] || `https://aws.amazon.com/${homeName}/`;
-  console.log(file)
-  console.log(consoleNameFixings[file] )
+  // console.log(file)
+  // console.log(consoleNameFixings[file] )
   // const consoleName = consoleNameFixings[file] || file.toLowerCase().replace(/-+/g, "");
   const consoleName = consoleNameFixings[file] || file.toLowerCase();
-  console.log(`consoleName is ${consoleName}`)
   const consoleUrl = `https://console.aws.amazon.com/${consoleName}/`;
-
+  
+  console.log(`consoleName is ${consoleName}`)
   console.log(`homeUrl is ${homeUrl}`)
+  console.log(`homeName is ${homeName}`)
   console.log(`consoleUrl is ${consoleUrl}`)
   
   await retry(async bail => {
@@ -242,17 +230,6 @@ files.forEach(async (file, index) => {
     }, {
       retries: 5
     })
-
-
-    // urlExists(consoleUrl, function (err, exists) {
-    //   // console.log(consoleUrl);
-    //   // console.log(exists)
-    //   // console.log(err)
-    //   if (!exists) {
-    //     console.log(`${consoleUrl} not exists`)
-    //     return
-    //   }
-    // })
   }
   // console.log("\n")
 })
@@ -260,20 +237,6 @@ files.forEach(async (file, index) => {
 
 
 function writeShortcutFile(destDir, file, url) {
-    // fs.writeFileSync(`${destDir}/${file}.url`, `[InternetShortcut]\nURL=${homeUrl}`);
-    // console.log(`write to ${destDir}/${file}.url`)
-    // console.log("\n")
-    // exec(`fileicon set ${destDir}/${file}.url icons/${file}.png`, function (error, stdout, stderr) {
-    //   console.log(error || stdout);
-    //   if (!error) {
-    //     exec(`SetFile -a E ${destDir}/${file}.url`, function (error, stdout, stderr) {
-    //       if (!error && index === files.length - 1) {
-    //         exec(`open ${destDir}`);
-    //       }
-    //     });
-    //   }
-    // });
-  
     fs.writeFileSync(`${destDir}/${file}.url`, `[InternetShortcut]\nURL=${url}`);
     console.log(`write to ${destDir}/${file}.url`)
     console.log("\n")
@@ -285,7 +248,6 @@ function writeShortcutFile(destDir, file, url) {
       }
     });
 }
-
 
 
 exec(`open ${destDir}`);
