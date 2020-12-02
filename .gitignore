@@ -13,3 +13,4 @@ node_modules/
 urls
 
 .DS_Store
+tmp

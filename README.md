@@ -1,19 +1,23 @@
 # AWS Launcher
 
-Launch your AWS Services from your macOS dock.  ([中文文档](https://github.com/dfang/aws-launcher/blob/master/README_zh-CN.md))
+forked from [kwent](https://kwent/aws-launcher)
+
+Launch your AWS Services from your macOS dock or Alfred.
+
+([中文说明](https://github.com/dfang/aws-launcher/blob/master/README_zh.md))
 
 [![npm version](https://img.shields.io/npm/v/aws-launcher.svg?style=flat)](https://www.npmjs.com/package/aws-launcher)
 
-[![AWS Launcher](https://github.com/kwent/aws-launcher/blob/master/doc/aws-launcher.gif?raw=true)](https://github.com/kwent/aws-launcher/)
+[![Grid](https://github.com/dfang/aws-launcher/blob/master/doc/grid.jpeg?raw=true)](https://github.com/kwent/aws-launcher/)
 
-[![Grid](https://github.com/kwent/aws-launcher/blob/master/doc/grid.jpeg?raw=true)](https://github.com/kwent/aws-launcher/)
-
+[![Alfred](https://github.com/dfang/aws-launcher/blob/master/doc/alfred.png?raw=true)](https://github.com/dfang/aws-launcher/)
 # Installation
 
-Just install the module using npm.
-
 ```bash
-$ npm install aws-launcher
+$ brew install fileicon
+$ git clone https://github.com/dfang/aws-launcer.git 
+$ cd aws-launcer
+$ node compile.js
 ```
 
 Drag and drop the generated folder (located in your `home` directory) in your

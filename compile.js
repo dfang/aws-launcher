@@ -5,14 +5,41 @@ const destDir = `${os.homedir()}/aws-launcher`;
 // Console
 const consoleDir = `${destDir}/console`;
 
-function gotConsolePage(name) {
-  return !servicesWithoutConsole.includes(name)
+function getHomeURL(namespace) {
+  return urlsFixing[file] || `https://aws.amazon.com/${namespace}`;
 }
 
-// https://github.com/vercel/async-retry
-const retry = require('async-retry')
-const fetch = require('node-fetch')
+function getConsoleURL(namespace) {
+  return urlsFixing[file] || `https://console.aws.amazon.com/${namespace}`;
+}
 
+function AWSService(homeName, homeURL, consoleName, consoleURL, destFile, icon) {
+  this.homeName = homeName;
+  this.homeURL = homeURL;
+  this.consoleName = consoleName;
+  this.consoleURL = consoleURL;
+  this.destFile = destFile;
+  this.icon = icon;
+}
+
+function writeShortcutFile(file, icon, url) {
+  fs.writeFileSync(file, `[InternetShortcut]\nURL=${url}`);
+  // console.log(`write to ${file}`)
+  // icon = file.replace(/-Console/g, "")
+  exec(`fileicon set ${file} ${icon}`, function (error, stdout, stderr) {
+    // console.log(error || stdout);
+    if (!error) {
+      exec(`SetFile -a E ${file}`, function (error, stdout, stderr) {
+        // console.log(error || stdout);
+      });
+    }
+  });
+}
+
+// icons/aws 文件夹下的，无console
+var svcs1 = []
+// icons 文件夹下的，有home有console
+var svcs2 = []
 
 urlsFixing = {
   "AWS-Management-Console": "https://console.aws.amazon.com",
@@ -73,6 +100,7 @@ urlsFixing = {
 }
 
 homeNameFixings = {
+  "SSO": "single-sign-on",
   "Resource-Access-Manager": "ram",
   "Service-Catalog": "servicecatalog",
   "Security-Hub": "securityhub",
@@ -81,6 +109,7 @@ homeNameFixings = {
 }
 
 consoleNameFixings = {
+  "SSO": "singlesignon",
   // "Service-Quotas": "servicequotas",
   // "Cost-Explorer": "billing",
   // "Budgets": "billing",
@@ -109,145 +138,68 @@ consoleNameFixings = {
   "Image-Builder": "imagebuilder"
 }
 
-// 有home无console
-servicesWithoutConsole = [
-  // "snowball",
-  "chime",
-  "braket",
-  "sso",
-  "aurora",
-  "quicksight",
-  "single-sign-on",
-  "mobileanalytics",
-  "global-accelerator",
-  "transit-gateway"
-]
-
 // Create destination folder
 if (!fs.existsSync(destDir)) {
   fs.mkdirSync(destDir);
   fs.mkdirSync(`${destDir}/aws`);
   fs.mkdirSync(`${destDir}/console`);
+  // exec(`rm ${destDir}/icons/aws/.DS_Store`)
+  // exec(`rm ${destDir}/icons/.DS_Store`)
 }
 
-// exec(`rm ${destDir}/icons/aws/.DS_Store`)
-// exec(`rm ${destDir}/icons/.DS_Store`)
-
-// Just test output
-// files = fs.readdirSync('icons');
-// files.forEach((file, index) => {
-//   if (file == ".DS_Store" || file == "aws") {
-//     return
-//   }
-//   console.log(file)
-// })
-
-
+// in icons/aws, only home page, no console page
 files = fs.readdirSync('icons/aws/');
 files.forEach((file, index) => {
   if (file == ".DS_Store") {
     return
   }
-
-  console.log(`Found file ${file}`)
   file = file.replace(/\.[^/.]+$/, "");
-  // console.log(`Compiling ${file}`);
   const namespace = homeNameFixings[file] || file.toLowerCase();
-  // console.log(`${namespace}`)
   const url = urlsFixing[file] || `https://aws.amazon.com/${namespace}`;
-  console.log(`url is ${url}`)
-  fs.writeFileSync(`${destDir}/aws/${file}.url`, `[InternetShortcut]\nURL=${url}`);
-  exec(`fileicon set ${destDir}/aws/${file}.url icons/aws/${file}.png`, function (error, stdout, stderr) {
-    console.log(error || stdout);
-    if (!error) {
-      exec(`SetFile -a E ${destDir}/aws/${file}.url`, function (error, stdout, stderr) {
-        if (!error && index === files.length - 1) {
-          exec(`open ${destDir}`);
-        }
-      });
-    }
-  });
-  console.log("\n")
+  var s = new AWSService(namespace, url, "", "", `${destDir}/aws/${file}.url`, `icons/aws/${file}.png`)
+  svcs1.push(s)
 })
 
+console.table(svcs1.map(function(x){
+  var obj = {}
+  obj.homeName= x.homeName;
+  obj.homeURL= x.homeURL;
+  return obj
+}));
+
+
+// service in icons/, got home page and console page
 files = fs.readdirSync('icons');
 files.forEach(async (file, index) => {
   if (file == ".DS_Store" || file == "aws") {
     return
   }
-
-  // console.log(`Found file ${file}`)
   file = file.replace(/\.[^/.]+$/, "")
-  // console.log(`Compiling ${file}`);
   const homeName = homeNameFixings[file] || file.toLowerCase();
   const homeUrl = urlsFixing[file] || `https://aws.amazon.com/${homeName}/`;
-  // console.log(file)
-  // console.log(consoleNameFixings[file] )
-  // const consoleName = consoleNameFixings[file] || file.toLowerCase().replace(/-+/g, "");
   const consoleName = consoleNameFixings[file] || file.toLowerCase();
   const consoleUrl = `https://console.aws.amazon.com/${consoleName}/`;
-  
-  console.log(`consoleName is ${consoleName}`)
-  console.log(`homeUrl is ${homeUrl}`)
-  console.log(`homeName is ${homeName}`)
-  console.log(`consoleUrl is ${consoleUrl}`)
-  
-  await retry(async bail => {
-    // if anything throws, we retry
-    console.log(`homeUrl is ${homeUrl}`)
-    console.log(`checking ${homeUrl}`)
-    const res = await fetch(homeUrl)
-    if (404 === res.status) {
-      // don't retry upon 404
-      console.log(`${homeUrl} not exists`)
-      bail(new Error('NOT FOUND'))
-      return
-    }
-    
-    writeShortcutFile(destDir, file, homeUrl)
-
-  }, {
-    retries: 10
-  })
-
-  if (gotConsolePage(consoleName)){
-    await retry(async bail => {
-      // if anything throws, we retry
-      console.log(`consoleUrl is ${consoleUrl}`)
-      console.log(`checking ${homeUrl}`)
-      const res = await fetch(consoleUrl)
-      
-      if (404 === res.status) {
-        // don't retry upon 404
-        console.log(`${consoleUrl} not exists`)
-        bail(new Error('NOT FOUND'))
-        return
-      }
-
-      consoleFile = `${file}-Console`
-      writeShortcutFile(consoleDir, consoleFile, consoleUrl)
-
-    }, {
-      retries: 5
-    })
-  }
-  // console.log("\n")
+  const icon = file.replace(/-Console/g, "")
+  var s = new AWSService(homeName, homeUrl, consoleName, consoleUrl, file, `icons/${icon}.png`)
+  svcs2.push(s)
 })
 
+console.table(svcs2.map(function(x){
+  var obj = {}
+  obj.homeName= x.homeName;
+  obj.homeURL= x.homeURL;
+  obj.consoleName = x.consoleName;
+  obj.consoleURL = x.consoleURL;
+  // obj.destFile = x.destFile;
+  // obj.icon = x.icon;
+  return obj
+}));
 
+console.log("writing shortcuts, please wait ..........\n")
 
-function writeShortcutFile(destDir, file, url) {
-    fs.writeFileSync(`${destDir}/${file}.url`, `[InternetShortcut]\nURL=${url}`);
-    console.log(`write to ${destDir}/${file}.url`)
-    console.log("\n")
-    icon = file.replace(/-Console/g, "")
-    exec(`fileicon set ${destDir}/${file}.url icons/${icon}.png`, function (error, stdout, stderr) {
-      console.log(error || stdout);
-      if (!error) {
-        exec(`SetFile -a E ${destDir}/${file}.url`, function (error, stdout, stderr) { });
-      }
-    });
-}
-
+svcs2.forEach(svc => {
+  writeShortcutFile(`${destDir}/${svc.destFile}.url`, svc.icon, svc.homeURL)
+  writeShortcutFile(`${destDir}/console/${svc.destFile}.url`, svc.icon, svc.consoleURL)
+})
 
 exec(`open ${destDir}`);
